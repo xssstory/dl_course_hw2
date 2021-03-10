@@ -79,6 +79,7 @@ def main(args):
             if acc > best_acc:
                 torch.save(net, os.path.join(args.model_dir, 'cifar10_4x_best.pth'))
                 best_acc = acc
+            net.train()
 
 def get_args():
     curr_dir = os.path.dirname(__file__)
