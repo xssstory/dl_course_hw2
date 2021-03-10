@@ -1,8 +1,16 @@
 import torch
 import os
+from torchvision.transforms import transforms
 from cifar10_4x import CIFAR10_4x
 from model import Net
 base_dir = os.path.dirname(__file__)
+
+
+transform = transforms.Compose(
+    [transforms.ToTensor(),
+    transforms.Normalize(
+        [125 / 255, 124 / 255, 115 / 255], [60 / 255 / 255, 59 / 255 / 255, 64 / 255 /255])
+    ])
 
 @torch.no_grad()
 def evaluation(net, dataLoader, device):
@@ -27,9 +35,9 @@ if __name__ == "__main__":
     print("number of trained parameters: %d" % (sum([param.nelement() for param in net.parameters() if param.requires_grad])))
     print("number of total parameters: %d" % (sum([param.nelement() for param in net.parameters()])))
     try:
-        testset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split='test')
+        testset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split='test', transform=transform)
     except Exception as e:
-        testset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split='valid')
+        testset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split='valid', transform=transform)
         print("can't load test set because {}, load valid set now".format(e))
     testloader = torch.utils.data.DataLoader(testset, batch_size=bsz, shuffle=False, num_workers=2)
 

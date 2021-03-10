@@ -14,6 +14,10 @@ class CIFAR10_4x(VisionDataset):
         root (string): Root directory of dataset where directory
             ``cifar-10-batches-py`` exists or will be saved to if download is set to True.
         split : tarin, valid or test
+        transform (callable, optional): A function/transform that takes in an PIL image
+            and returns a transformed version. E.g, ``transforms.RandomCrop``
+        target_transform (callable, optional): A function/transform that takes in the
+            target and transforms it.
     """
     base_folder = 'cifar_10_4x'
 
@@ -32,12 +36,14 @@ class CIFAR10_4x(VisionDataset):
             self,
             root: str,
             split: str = 'train',
+            transform: Optional[Callable] = None,
+            target_transform: Optional[Callable] = None,
     ) -> None:
 
         super(CIFAR10_4x, self).__init__(root)
 
         self.split = split  # training set or test set
-
+        self.transform = transform
 
         file_name = self.file_dic[split]
 
@@ -76,7 +82,16 @@ class CIFAR10_4x(VisionDataset):
             tuple: (image, target) where target is index of the target class.
         """
         img, target = self.data[index], self.targets[index]
-        img = img.transpose(2, 0, 1) # HWC -> CHW
+
+        # doing this so that it is consistent with all other datasets
+        # to return a PIL Image
+        img = Image.fromarray(img)
+
+        if self.transform is not None:
+            img = self.transform(img)
+
+        if self.target_transform is not None:
+            target = self.target_transform(target)
 
         return img, target
 

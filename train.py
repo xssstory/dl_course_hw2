@@ -12,6 +12,7 @@ from collections import deque
 from PIL import Image
 from cifar10_4x import CIFAR10_4x
 from model import Net
+# from model_strong import Net
 from evaluation import evaluation
 
 base_dir = os.path.dirname(__file__)
@@ -31,11 +32,16 @@ def main(args):
     bsz = args.batch_size
     device = torch.device("cuda" if (torch.cuda.is_available() and not args.disable_cuda) else "cpu")
 
+    transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize([125 / 255, 124 / 255, 115 / 255], [60 / 255 / 255, 59 / 255 / 255, 64 / 255 /255])
+    ])
+    # transform = None
 
-    trainset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split="train")
+    trainset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split="train", transform=transform)
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=bsz, shuffle=True, num_workers=args.num_workers)
 
-    validset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split='valid')
+    validset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split='valid', transform=transform)
     validloader = torch.utils.data.DataLoader(validset, batch_size=bsz, shuffle=False, num_workers=args.num_workers)
 
     net = Net()
@@ -43,7 +49,7 @@ def main(args):
     print("number of total parameters: %d" % (sum([param.nelement() for param in net.parameters()])))
 
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(net.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    optimizer = torch.optim.Adam(net.parameters(), lr=args.lr, weight_decay=args.weight_decay)
 
     net.to(device)
     best_acc = 0
