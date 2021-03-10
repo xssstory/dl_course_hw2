@@ -34,19 +34,20 @@
    python evaluation.py
    ```
 
-##### Task
+##### Instruction
 
 1. Run the example.
-2. Train your own model, your final model should not be larger than 200M and using any pre-trained model is **NOT** permitted.
-3. **DO NOT** change the file *evaluation.py* or *cifar10\_4x.py*, and make sure you can test your model using *evaluation.py*. 
-4. Name your best model *cifar10\_4x\_best.pth*. Submit this single model file and all your .py files to weblearning. We will use *evaluation.py* to evaluate your model on the test set.
-5. Submit your report. 
+2. Train your own model. 
+3. Your final model should not be larger than 200M and using any pre-trained model is **NOT** permitted.
+4. **DO NOT** change the file *evaluation.py* or *cifar10\_4x.py*, and make sure you can test your model using *evaluation.py*. 
+5. Name your best model *cifar10\_4x\_best.pth*. Submit this single model file and all your .py files to weblearning. We will use *evaluation.py* to evaluate your model on the test set.
+6. Submit your report. 
 
 ##### Grading
 
-Regarding the evaluation criteria of your model, assume your  test accuracy is X then your score is
+Regarding the evaluation criteria of your model, assume your  test accuracy is $X$ then your score is
 $$
-\frac{min(X, H) - 60}{H - 60}
+\frac{min(X, H) - 0.6}{H - 0.6} \times 7
 $$
-where H is accuracy of the model trained by TAs.
+where $H$ is accuracy of the model trained by TAs.
 **Bonus**: The best submission with the highest testing accuracy will get 1 point for the final grade.
