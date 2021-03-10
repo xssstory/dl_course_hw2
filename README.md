@@ -45,9 +45,9 @@
 
 ##### Grading
 
-Regarding the evaluation criteria of your model, assume your  test accuracy is $X$ then your score is
+Regarding the evaluation criteria of your model, assume your  test accuracy is X then your score is
 $$
 \frac{min(X, H) - 0.6}{H - 0.6} \times 7
 $$
-where $H$ is accuracy of the model trained by TAs.
+where H is accuracy of the model trained by TAs.
 **Bonus**: The best submission with the highest testing accuracy will get 1 point for the final grade.
