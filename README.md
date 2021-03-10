@@ -8,8 +8,9 @@
 ##### Run the examples:
 
 1. Download the dataset from https://cloud.tsinghua.edu.cn/d/00e0704738e04d32978b/ and organized the data as follows:
+
    ```css
-   hw2
+   dl_course_hw2
    ├── README.md
    └── data
        ├── cifar_10_4x
@@ -20,7 +21,7 @@
    	├── model.py
        └── train.py
    ```
-   
+
 2. Run the example:
 
    ``` bash
@@ -33,9 +34,20 @@
    python evaluation.py
    ```
 
-##### Task
+##### Instruction
 
 1. Run the example.
-2. Modify train.py and model.py to train your model. **<u>*Do not*</u>** modify evaluation.py and make sure your can finally test your model using evaluation.py, since we don't provide you the test yet, evaluation.py will test your model on the validation set.
-3. Submit your model named "cifar10_4x_best.pth" and your model.py. Test and make sure you can run the evaluation.py successfully, otherwise your will lose the score of coding.
-4. Submit your report. 
+2. Train your own model. 
+3. Your final model should not be larger than 200M and using any pre-trained model is **NOT** permitted.
+4. **DO NOT** change the file *evaluation.py* or *cifar10\_4x.py*, and make sure you can test your model using *evaluation.py*. 
+5. Name your best model *cifar10\_4x\_best.pth*. Submit this single model file and all your .py files to weblearning. We will use *evaluation.py* to evaluate your model on the test set.
+6. Submit your report. 
+
+##### Grading
+
+Regarding the evaluation criteria of your model, assume your  test accuracy is $X$ then your score is
+$$
+\frac{min(X, H) - 0.6}{H - 0.6} \times 7
+$$
+where $H$ is accuracy of the model trained by TAs.
+**Bonus**: The best submission with the highest testing accuracy will get 1 point for the final grade.
