@@ -12,7 +12,6 @@ from collections import deque
 from PIL import Image
 from cifar10_4x import CIFAR10_4x
 from model import Net
-# from model_strong import Net
 from evaluation import evaluation
 
 base_dir = os.path.dirname(__file__)
@@ -36,8 +35,7 @@ def main(args):
         transforms.ToTensor(),
         transforms.Normalize([125 / 255, 124 / 255, 115 / 255], [60 / 255 / 255, 59 / 255 / 255, 64 / 255 /255])
     ])
-    # transform = None
-
+    
     trainset = CIFAR10_4x(root=os.path.join(base_dir, 'data'), split="train", transform=transform)
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=bsz, shuffle=True, num_workers=args.num_workers)
 
