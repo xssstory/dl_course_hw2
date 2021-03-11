@@ -16,10 +16,10 @@
        ├── cifar_10_4x
            ├── train
            └── valid
-   	├── cifar10_4x.py
-   	├── evaluation.py
-   	├── model.py
-       └── train.py
+   ├── cifar10_4x.py
+   ├── evaluation.py
+   ├── model.py
+   └── train.py
    ```
 
 2. Run the example:
