@@ -48,5 +48,6 @@
 1. Regarding the evaluation criteria of your model, assume your  test accuracy is X then your score is
 
 ![1](http://latex.codecogs.com/svg.latex?\frac{\min(X,0.9)-0.6}{0.9-0.6}\times7)
-3. **Bonus**: The best submission with the highest testing accuracy will get 1 point for the final grade.
+
+2. **Bonus**: The best submission with the highest testing accuracy will get 1 point for the final grade.
 
