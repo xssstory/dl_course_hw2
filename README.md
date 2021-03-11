@@ -12,7 +12,7 @@
    ```css
    dl_course_hw2
    ├── README.md
-   └── data
+   ├── data
        └── cifar_10_4x
            ├── train
            └── valid
