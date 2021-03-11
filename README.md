@@ -46,8 +46,6 @@
 ##### Grading
 
 1. Regarding the evaluation criteria of your model, assume your  test accuracy is X then your score is
-$$
-\frac{min(X, 0.9) - 0.6}{0.9 - 0.6} \times 7
-$$
+![1](http://latex.codecogs.com/svg.latex?\frac{min(X,%200.9)%20-%200.6}{0.9%20-%200.6}%20\times%207
 where H is accuracy of the model trained by TAs.
 2. **Bonus**: The best submission with the highest testing accuracy will get 1 point for the final grade.
