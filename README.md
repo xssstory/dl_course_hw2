@@ -13,7 +13,7 @@
    dl_course_hw2
    ├── README.md
    └── data
-       ├── cifar_10_4x
+       └── cifar_10_4x
            ├── train
            └── valid
    ├── cifar10_4x.py
@@ -47,7 +47,7 @@
 
 1. Regarding the evaluation criteria of your model, assume your  test accuracy is X then your score is
 $$
-\frac{min(X, H) - 0.6}{H - 0.6} \times 7
+\frac{min(X, 0.9) - 0.6}{0.9 - 0.6} \times 7
 $$
 where H is accuracy of the model trained by TAs.
 2. **Bonus**: The best submission with the highest testing accuracy will get 1 point for the final grade.
