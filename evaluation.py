@@ -9,7 +9,7 @@ base_dir = os.path.dirname(__file__)
 transform = transforms.Compose(
     [transforms.ToTensor(),
     transforms.Normalize(
-        [125 / 255, 124 / 255, 115 / 255], [60 / 255 / 255, 59 / 255 / 255, 64 / 255 /255])
+        [125 / 255, 124 / 255, 115 / 255], [60 / 255, 59 / 255, 64 / 255])
     ])
 
 @torch.no_grad()
